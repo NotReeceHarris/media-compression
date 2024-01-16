@@ -16,8 +16,6 @@ def get_image_size(image_path):
 
 def process_image(image_path):
     img = Image.open(image_path)
-    width, height = img.size
-    
     img.save('compressed.jpg', optimize = True, quality = 25)
 
     start_size = get_image_size('example.jpg')
@@ -25,10 +23,9 @@ def process_image(image_path):
 
     print('\nStarter image:', round(start_size, 2), 'KB')
     print('Compressed image:', round(compressed_size, 2), 'KB')
+
     print('Image size reduced by:', round((start_size - compressed_size), 2), 'KB')
     print('Percent of original size:', round((compressed_size / start_size * 100), 2), '%')
 
 image_path = 'example.jpg'
 process_image(image_path)
-
-
